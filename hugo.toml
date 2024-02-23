@@ -1,0 +1,56 @@
+baseURL = "https://journeysu.github.io/"
+title = "Coding Grassland"
+author = "Hailey"
+copyright = "Hailey"
+paginate = 10
+languageCode = "en"
+theme = "tailwind"
+publishDir = "docs"
+
+
+
+[params]
+  # dir name of your blog content (default is `content/posts`).
+  # the list of set content will show up on your index page (baseurl).
+  contentTypeName = "posts"
+  
+  # Show table of contents at the top of your posts (defaults to false)
+  # Alternatively, add this param to post front matter for specific posts
+  showReadingTime = false
+
+  [params.header]
+    logo = "logo.webp"
+
+  [params.footer]
+    since = 2021
+    poweredby = false
+
+[menu]
+
+  [[menu.main]]
+    identifier = "post"
+    name = "Post"
+	pageRef = "/posts"
+    weight = 0
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    pageRef = "/about"
+    weight = 10
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+
+
+
+[header]
+  logo = "https://placehold.co/512/webp"
+  sticky = false
+
+[footer]
+  since = 2023
+  poweredby = true
