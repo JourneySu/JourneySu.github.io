@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>資料結構及演算法學習筆記 :: Coding Grassland - Example site for hugo-theme-tailwind</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="[TOC]
+演算法是什麼 {待補}
+Chatgpt提供的學習計劃 第一階段：建立基礎 基本概念 學習演算法和資料結構的基本概念，例如陣列、鏈表、堆疊、佇列等。 時間複雜度和空間複雜度 理解演算法的時間複雜度和空間複雜度，並學習如何評估演算法的效能。 排序演算法 學習常見的排序演算法，如冒泡排序、插入排序、選擇排序、快速排序、合併排序等。 搜尋演算法 瞭解搜尋演算法，包括線性搜尋和二分搜尋。 第二階段：擴展知識 圖論 學習圖論相關的基本概念，如圖、路徑、迴路、最短路徑等，以及常見的圖論演算法，如深度優先搜索（DFS）和廣度優先搜索（BFS）。 動態規劃 瞭解動態規劃的基本原理和應用場景，並學習如何設計動態規劃演算法解決問題。 貪婪演算法 學習貪婪演算法的基本原理和常見應用，以及貪婪演算法與動態規劃的區別和適用場景。 第三階段：實際應用 演算法問題練習
+解決各種演算法問題，可以通過線上資源如 LeetCode、HackerRank、Codewars 等網站來進行練習。 專案應用
+在你的 ASP.NET Core 專案中實際應用所學的演算法知識，優化程式碼效能，處理複雜的邏輯問題。 演算法介紹 Two Pointer 其他待整理key word 資料結構 電腦區分兩種方法： 大塊：Array 小塊：Linked List 連結數量 一個連一個&amp;mdash;&amp;gt;Linked List(鏈結串列) 一個連兩個&amp;mdash;&amp;gt;Binary tree(二元樹) 一個連多個&amp;mdash;&amp;gt;B-Tree 或 B&#43; Tree(多元樹) 存放位置 通常存放在記憶體：Linked List、Binary tree 通常存放在硬碟：B-Tree Hash Table(雜湊表)：
+混合大塊和小塊的結構，也就是rray當大容器，每一格當中都可以放一個Linked List。至於每個東西要放哪一格，就是由雜湊函數來決定！ 演算法 排序 &#43; 二分搜尋法：用來加快Arry的搜尋速度 雜湊函數(不確定是否歸類在演算法) 按方法分類 先讀書培養與鍛鍊程式設計的邏輯腦-程式設計大賫的解題策略基礎入門再補上一些以下方法，就差不多夠了。
+遞增法 Incremental Method 記憶法 Memoization 枚舉法 Enumerative Method 遞推法 Iterative Method 遞歸法 Recrusive Method 分治法 Divide and Conquer 動態規劃 Dynamic Programming 貪心法 Greedy Method 縮放法 Scaling Method 套用模型 Modeling "
+/>
+<meta
+  name="keywords"
+  content="hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+/>
+<meta name="robots" content="noodp" />
+<meta property="og:title" content="資料結構及演算法學習筆記" />
+<meta property="og:description" content="資料結構及演算法概觀…" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/algorithm-note/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-26T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="資料結構及演算法學習筆記"/>
+<meta name="twitter:description" content="資料結構及演算法概觀…"/>
+
+
+<link rel="canonical" href="http://localhost:1313/posts/algorithm-note/" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/css/index.a85ebbf06ee701145daa5625a9446ae1d1d7fea8d0baa6f2e5bc271f3d42752c.css">
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您的網站標題</title>
+    <style>
+        .centered-title {
+            font-size: 48px;  
+            color: #f5f5f5;  
+            text-align: center;  
+            font-weight: bold;  
+            background-color: #1f2937;  
+            padding: 10px 20px;  
+
+        }
+    </style>
+</head>
+<body>
+    <h1 class="centered-title">_____在草原上開發的海莉_____(Dev version)</h1>
+</body>
+</html>
+
+  
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800">
+  <header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="about" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/about/" title="About">About</a>
+        </li>
+      
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/posts/" title="Post">Post</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href="/search/" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Search</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Toggle dark mode">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col gap-y-3 p-6 mt-6 mx-2 md:mx-0 rounded-lg shadow-md bg-white dark:bg-gray-700">
+    <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+      <a href="/posts/algorithm-note/">資料結構及演算法學習筆記</a>
+    </h1>
+
+    
+    <h2 class="my-4 text-large text-slate-600 dark:text-slate-300">
+      資料結構及演算法概觀…
+    </h2>
+    
+    
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+      
+      <li>
+        <a href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          演算法
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          資料結構
+        </a>
+      </li>
+      
+    
+    
+      
+      <li>
+        <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">演算法</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">資料結構</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-02-26T00:00:00&#43;00:00">
+      2024-02-26
+    </time>
+  </div>
+</div>
+
+
+    
+      
+      <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+        <h2>Table of Contents</h2>
+        <aside><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#第一階段建立基礎">第一階段：建立基礎</a></li>
+        <li><a href="#第二階段擴展知識">第二階段：擴展知識</a></li>
+        <li><a href="#第三階段實際應用">第三階段：實際應用</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#two-pointer">Two Pointer</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#資料結構">資料結構</a></li>
+      </ul>
+    </li>
+    <li><a href="#電腦區分兩種方法---omit-in-toc---">電腦區分兩種方法：<!-- raw HTML omitted --></a>
+      <ul>
+        <li><a href="#演算法">演算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#按方法分類----omit-in-toc---">按方法分類 <!-- raw HTML omitted --></a></li>
+  </ul>
+</nav></aside>
+      </section>
+      
+    
+
+    <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+      <p>[TOC]</p>
+<h1 id="演算法是什麼">演算法是什麼</h1>
+<p>{待補}</p>
+<h1 id="chatgpt提供的學習計劃">Chatgpt提供的學習計劃</h1>
+<h3 id="第一階段建立基礎">第一階段：建立基礎</h3>
+<ol>
+<li><strong>基本概念</strong>
+<ul>
+<li>學習演算法和資料結構的基本概念，例如陣列、鏈表、堆疊、佇列等。</li>
+</ul>
+</li>
+<li><strong>時間複雜度和空間複雜度</strong>
+<ul>
+<li>理解演算法的時間複雜度和空間複雜度，並學習如何評估演算法的效能。</li>
+</ul>
+</li>
+<li><strong>排序演算法</strong>
+<ul>
+<li>學習常見的排序演算法，如冒泡排序、插入排序、選擇排序、快速排序、合併排序等。</li>
+</ul>
+</li>
+<li><strong>搜尋演算法</strong>
+<ul>
+<li>瞭解搜尋演算法，包括線性搜尋和二分搜尋。</li>
+</ul>
+</li>
+</ol>
+<h3 id="第二階段擴展知識">第二階段：擴展知識</h3>
+<ol>
+<li><strong>圖論</strong>
+<ul>
+<li>學習圖論相關的基本概念，如圖、路徑、迴路、最短路徑等，以及常見的圖論演算法，如深度優先搜索（DFS）和廣度優先搜索（BFS）。</li>
+</ul>
+</li>
+<li><strong>動態規劃</strong>
+<ul>
+<li>瞭解動態規劃的基本原理和應用場景，並學習如何設計動態規劃演算法解決問題。</li>
+</ul>
+</li>
+<li><strong>貪婪演算法</strong>
+<ul>
+<li>學習貪婪演算法的基本原理和常見應用，以及貪婪演算法與動態規劃的區別和適用場景。</li>
+</ul>
+</li>
+</ol>
+<h3 id="第三階段實際應用">第三階段：實際應用</h3>
+<ol>
+<li>
+<p><strong>演算法問題練習</strong></p>
+<ul>
+<li>解決各種演算法問題，可以通過線上資源如 LeetCode、HackerRank、Codewars 等網站來進行練習。</li>
+</ul>
+</li>
+<li>
+<p><strong>專案應用</strong></p>
+<ul>
+<li>在你的 ASP.NET Core 專案中實際應用所學的演算法知識，優化程式碼效能，處理複雜的邏輯問題。</li>
+</ul>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h1 id="演算法介紹">演算法介紹</h1>
+<h3 id="two-pointer">Two Pointer</h3>
+<!-- raw HTML omitted -->
+<h1 id="其他待整理key-word">其他待整理key word</h1>
+<h3 id="資料結構">資料結構</h3>
+<h2 id="電腦區分兩種方法---omit-in-toc---">電腦區分兩種方法：<!-- raw HTML omitted --></h2>
+<ul>
+<li>大塊：Array</li>
+<li>小塊：Linked List
+<ol>
+<li>連結數量
+<ul>
+<li>一個連一個&mdash;&gt;Linked List(鏈結串列)</li>
+<li>一個連兩個&mdash;&gt;Binary tree(二元樹)</li>
+<li>一個連多個&mdash;&gt;B-Tree 或 B<!-- raw HTML omitted -->+<!-- raw HTML omitted --> Tree(多元樹)</li>
+</ul>
+</li>
+<li>存放位置
+<ul>
+<li>通常存放在記憶體：Linked List、Binary tree</li>
+<li>通常存放在硬碟：B-Tree</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>Hash Table(雜湊表)：<br>
+混合大塊和小塊的結構，也就是rray當大容器，每一格當中都可以放一個Linked List。至於每個東西要放哪一格，就是由雜湊函數來決定！
+<div class="not-prose">
+<figure>
+    <img src="imgs/Hashtable1.png"
+      alt="Hash Table1" 
+      loading="lazy"
+    >
+  </figure></div>
+</p>
+<!-- raw HTML omitted -->
+<h3 id="演算法">演算法</h3>
+<ul>
+<li>排序 + 二分搜尋法：用來加快Arry的搜尋速度</li>
+<li>雜湊函數(不確定是否歸類在演算法)</li>
+</ul>
+<h2 id="按方法分類----omit-in-toc---">按方法分類 <!-- raw HTML omitted --></h2>
+<p>先讀書<code>培養與鍛鍊程式設計的邏輯腦-程式設計大賫的解題策略基礎入門</code>再補上一些以下方法，就差不多夠了。</p>
+<ul>
+<li>遞增法 Incremental Method</li>
+<li>記憶法 Memoization</li>
+<li>枚舉法 Enumerative Method</li>
+<li>遞推法 Iterative Method</li>
+<li>遞歸法 Recrusive Method</li>
+<li>分治法 Divide and Conquer</li>
+<li>動態規劃 Dynamic Programming</li>
+<li>貪心法 Greedy Method</li>
+<li>縮放法 Scaling Method</li>
+<li>套用模型 Modeling</li>
+</ul>
+
+    </article>
+
+    
+
+
+
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2021 - 2024 Hailey
+    
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/main.js"></script>
+
+
+
+
+</body>
+</html>

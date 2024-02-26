@@ -7,8 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Hailey</copyright>
-    <lastBuildDate>Thu, 11 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Feb 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>演算法</title>
+      <link>http://localhost:1313/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>資料結構</title>
+      <link>http://localhost:1313/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Backend</title>
       <link>http://localhost:1313/categories/backend/</link>
