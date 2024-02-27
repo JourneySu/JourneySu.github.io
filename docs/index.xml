@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Hailey</copyright>
-    <lastBuildDate>Mon, 26 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
@@ -18,17 +18,24 @@
     </item>
     <item>
       <title>資料結構及演算法學習筆記</title>
-      <link>http://localhost:1313/posts/algorithm-note/</link>
-      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/algorithm-note/</guid>
-      <description>[TOC]&#xA;演算法是什麼 {待補}&#xA;Chatgpt提供的學習計劃 第一階段：建立基礎 基本概念 學習演算法和資料結構的基本概念，例如陣列、鏈表、堆疊、佇列等。 時間複雜度和空間複雜度 理解演算法的時間複雜度和空間複雜度，並學習如何評估演算法的效能。 排序演算法 學習常見的排序演算法，如冒泡排序、插入排序、選擇排序、快速排序、合併排序等。 搜尋演算法 瞭解搜尋演算法，包括線性搜尋和二分搜尋。 第二階段：擴展知識 圖論 學習圖論相關的基本概念，如圖、路徑、迴路、最短路徑等，以及常見的圖論演算法，如深度優先搜索（DFS）和廣度優先搜索（BFS）。 動態規劃 瞭解動態規劃的基本原理和應用場景，並學習如何設計動態規劃演算法解決問題。 貪婪演算法 學習貪婪演算法的基本原理和常見應用，以及貪婪演算法與動態規劃的區別和適用場景。 第三階段：實際應用 演算法問題練習&#xA;解決各種演算法問題，可以通過線上資源如 LeetCode、HackerRank、Codewars 等網站來進行練習。 專案應用&#xA;在你的 ASP.NET Core 專案中實際應用所學的演算法知識，優化程式碼效能，處理複雜的邏輯問題。 演算法介紹 Two Pointer 其他待整理key word 資料結構 電腦區分兩種方法： 大塊：Array 小塊：Linked List 連結數量 一個連一個&amp;mdash;&amp;gt;Linked List(鏈結串列) 一個連兩個&amp;mdash;&amp;gt;Binary tree(二元樹) 一個連多個&amp;mdash;&amp;gt;B-Tree 或 B+ Tree(多元樹) 存放位置 通常存放在記憶體：Linked List、Binary tree 通常存放在硬碟：B-Tree Hash Table(雜湊表)：&#xA;混合大塊和小塊的結構，也就是rray當大容器，每一格當中都可以放一個Linked List。至於每個東西要放哪一格，就是由雜湊函數來決定！ 演算法 排序 + 二分搜尋法：用來加快Arry的搜尋速度 雜湊函數(不確定是否歸類在演算法) 按方法分類 先讀書培養與鍛鍊程式設計的邏輯腦-程式設計大賫的解題策略基礎入門再補上一些以下方法，就差不多夠了。&#xA;遞增法 Incremental Method 記憶法 Memoization 枚舉法 Enumerative Method 遞推法 Iterative Method 遞歸法 Recrusive Method 分治法 Divide and Conquer 動態規劃 Dynamic Programming 貪心法 Greedy Method 縮放法 Scaling Method 套用模型 Modeling </description>
+      <link>http://localhost:1313/posts/algorithm/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/algorithm/</guid>
+      <description>目錄&#xA;演算法是什麼&#xD;Chatgpt提供的學習計劃&#xD;第一階段：建立基礎&#xD;第二階段：擴展知識&#xD;第三階段：實際應用&#xD;演算法介紹&#xD;Two Pointer&#xD;其他待整理key word&#xD;資料結構&#xD;演算法&#xD;演算法是什麼 {待補}&#xA;Chatgpt提供的學習計劃 第一階段：建立基礎 基本概念 學習演算法和資料結構的基本概念，例如陣列、鏈表、堆疊、佇列等。 時間複雜度和空間複雜度 理解演算法的時間複雜度和空間複雜度，並學習如何評估演算法的效能。 排序演算法 學習常見的排序演算法，如冒泡排序、插入排序、選擇排序、快速排序、合併排序等。 搜尋演算法 瞭解搜尋演算法，包括線性搜尋和二分搜尋。 第二階段：擴展知識 圖論 學習圖論相關的基本概念，如圖、路徑、迴路、最短路徑等，以及常見的圖論演算法，如深度優先搜索（DFS）和廣度優先搜索（BFS）。 動態規劃 瞭解動態規劃的基本原理和應用場景，並學習如何設計動態規劃演算法解決問題。 貪婪演算法 學習貪婪演算法的基本原理和常見應用，以及貪婪演算法與動態規劃的區別和適用場景。 第三階段：實際應用 演算法問題練習&#xA;解決各種演算法問題，可以通過線上資源如 LeetCode、HackerRank、Codewars 等網站來進行練習。 專案應用&#xA;在你的 ASP.NET Core 專案中實際應用所學的演算法知識，優化程式碼效能，處理複雜的邏輯問題。 演算法介紹 Two Pointer 其他待整理key word 資料結構 電腦區分兩種方法： 大塊：Array 小塊：Linked List 連結數量 一個連一個&amp;mdash;&amp;gt;Linked List(鏈結串列) 一個連兩個&amp;mdash;&amp;gt;Binary tree(二元樹) 一個連多個&amp;mdash;&amp;gt;B-Tree 或 B+ Tree(多元樹) 存放位置 通常存放在記憶體：Linked List、Binary tree 通常存放在硬碟：B-Tree Hash Table(雜湊表)：&#xA;混合大塊和小塊的結構，也就是rray當大容器，每一格當中都可以放一個Linked List。至於每個東西要放哪一格，就是由雜湊函數來決定！ 演算法 排序 + 二分搜尋法：用來加快Arry的搜尋速度 雜湊函數(不確定是否歸類在演算法) 按方法分類 先讀書培養與鍛鍊程式設計的邏輯腦-程式設計大賫的解題策略基礎入門再補上一些以下方法，就差不多夠了。</description>
     </item>
     <item>
-      <title>First Test</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Thu, 11 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;p&gt;#這裡是目錄&lt;br&gt;&#xA;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      <title>Hugo BundlePage</title>
+      <link>http://localhost:1313/posts/bundlepage/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bundlepage/</guid>
+      <description>目錄&#xA;常用指令&#xD;那些我踩的坑&#xD;我明明刪除了文章，為什麼輸入url還是可以進入該網址閱讀？&#xD;常用指令 建置&#xA;hugo&#xD;建置，並在local host預覽網站(預設網址:http://localhost:1313/)&#xA;hugo server 那些我踩的坑 我明明刪除了文章，為什麼輸入url還是可以進入該網址閱讀？ 原因：當您使用 hugo server 命令運行 Hugo 伺服器時，Hugo 不會自動清理 public 目錄中的內容。&#xA;解決： 要清理已經生成的內容，您可以在執行 hugo 命令之前手動清空 public 目錄，或者在建置時加入以下參數。&#xA;該參數告訴 Hugo 在生成網站之前清理 public 目錄歐&#xA;hugo --cleanDestinationDir&#xD;hugo server --cleanDestinationDir&#xD;</description>
+    </item>
+    <item>
+      <title>文章模板(開發用)</title>
+      <link>http://localhost:1313/posts/posttemplate/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/posttemplate/</guid>
+      <description>目錄&#xA;演算法是什麼&#xD;Chatgpt提供的學習計劃&#xD;第一階段：建立基礎&#xD;第二階段：擴展知識&#xD;第三階段：實際應用&#xD;演算法介紹&#xD;Two Pointer&#xD;其他待整理key word&#xD;資料結構&#xD;演算法&#xD;演算法是什麼 {待補}&#xA;Chatgpt提供的學習計劃 第一階段：建立基礎 基本概念 學習演算法和資料結構的基本概念，例如陣列、鏈表、堆疊、佇列等。 時間複雜度和空間複雜度 理解演算法的時間複雜度和空間複雜度，並學習如何評估演算法的效能。 排序演算法 學習常見的排序演算法，如冒泡排序、插入排序、選擇排序、快速排序、合併排序等。 搜尋演算法 瞭解搜尋演算法，包括線性搜尋和二分搜尋。 第二階段：擴展知識 圖論 學習圖論相關的基本概念，如圖、路徑、迴路、最短路徑等，以及常見的圖論演算法，如深度優先搜索（DFS）和廣度優先搜索（BFS）。 動態規劃 瞭解動態規劃的基本原理和應用場景，並學習如何設計動態規劃演算法解決問題。 貪婪演算法 學習貪婪演算法的基本原理和常見應用，以及貪婪演算法與動態規劃的區別和適用場景。 第三階段：實際應用 演算法問題練習&#xA;解決各種演算法問題，可以通過線上資源如 LeetCode、HackerRank、Codewars 等網站來進行練習。 專案應用&#xA;在你的 ASP.NET Core 專案中實際應用所學的演算法知識，優化程式碼效能，處理複雜的邏輯問題。 演算法介紹 Two Pointer 其他待整理key word 資料結構 電腦區分兩種方法： 大塊：Array 小塊：Linked List 連結數量 一個連一個&amp;mdash;&amp;gt;Linked List(鏈結串列) 一個連兩個&amp;mdash;&amp;gt;Binary tree(二元樹) 一個連多個&amp;mdash;&amp;gt;B-Tree 或 B+ Tree(多元樹) 存放位置 通常存放在記憶體：Linked List、Binary tree 通常存放在硬碟：B-Tree Hash Table(雜湊表)：&#xA;混合大塊和小塊的結構，也就是rray當大容器，每一格當中都可以放一個Linked List。至於每個東西要放哪一格，就是由雜湊函數來決定！ 演算法 排序 + 二分搜尋法：用來加快Arry的搜尋速度 雜湊函數(不確定是否歸類在演算法) 按方法分類 先讀書培養與鍛鍊程式設計的邏輯腦-程式設計大賫的解題策略基礎入門再補上一些以下方法，就差不多夠了。</description>
     </item>
   </channel>
 </rss>

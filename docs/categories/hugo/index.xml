@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Coding Grassland</title>
+    <link>http://localhost:1313/categories/hugo/</link>
+    <description>Recent content in Hugo on Coding Grassland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Hailey</copyright>
+    <lastBuildDate>Mon, 26 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo BundlePage</title>
+      <link>http://localhost:1313/posts/bundlepage/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bundlepage/</guid>
+      <description>目錄&#xA;常用指令&#xD;那些我踩的坑&#xD;我明明刪除了文章，為什麼輸入url還是可以進入該網址閱讀？&#xD;常用指令 建置&#xA;hugo&#xD;建置，並在local host預覽網站(預設網址:http://localhost:1313/)&#xA;hugo server 那些我踩的坑 我明明刪除了文章，為什麼輸入url還是可以進入該網址閱讀？ 原因：當您使用 hugo server 命令運行 Hugo 伺服器時，Hugo 不會自動清理 public 目錄中的內容。&#xA;解決： 要清理已經生成的內容，您可以在執行 hugo 命令之前手動清空 public 目錄，或者在建置時加入以下參數。&#xA;該參數告訴 Hugo 在生成網站之前清理 public 目錄歐&#xA;hugo --cleanDestinationDir&#xD;hugo server --cleanDestinationDir&#xD;</description>
+    </item>
+  </channel>
+</rss>

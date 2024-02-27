@@ -1,1 +1,7 @@
 D:\File\Hugo\themes\tailwind\layouts\partials
+
+
+
+
+single.html-->將內容移除預設TOC的部份
+D:\File\JourneySu.github.io\themes\tailwind\layouts\_default
