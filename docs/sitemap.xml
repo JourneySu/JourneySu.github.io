@@ -22,7 +22,13 @@
     <loc>http://localhost:1313/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/series/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-02-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/recursion/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/</loc>

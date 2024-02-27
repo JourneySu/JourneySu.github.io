@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>談談遞迴Recursion :: Coding Grassland - Example site for hugo-theme-tailwind</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="目錄
+科普一下 non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？
+直接上個例子：
+non-decreasing(非遞減) ： 1 2 3 4 or 1 1 2 3
+increasing(遞增) ：1 2 3 4
+非遞減的意思是下一個元素不小於前一個元素，所以 1 2 3 4 or 1 1 2 3 都符合非遞減的條件，
+但只有1 2 3 4符合遞增的條件，所以兩種排序方式是有這樣的差別的。
+處理Linked-List(鏈結串列)的各種方式： Push-從尾新增節點
+pop-從尾移除節點
+Shift-從頭移除節點
+Unshift-從頭新增節點
+Insert-從中間新增節點
+remove-從中間移除節點
+get-取得節點資訊：類似Search
+Linked List及Array 時間複雜度比較表 思考：比較下來，發現LinkedList的優勢會在從頭新增元素時，不需像Array一樣將所有索引重新計算，但整體看下來，適合用Array的應用情境會比較多，不太確定Singly-Linked-List的重要性為何，待後面有更深入了解再補上吧。 (有可能使用方式是來做其他演算法如二元樹的基礎)
+參考資料"
+/>
+<meta
+  name="keywords"
+  content="hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+/>
+<meta name="robots" content="noodp" />
+<meta property="og:title" content="談談遞迴Recursion" />
+<meta property="og:description" content="…" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/recursion/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-27T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="談談遞迴Recursion"/>
+<meta name="twitter:description" content="…"/>
+
+
+<link rel="canonical" href="http://localhost:1313/posts/recursion/" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/css/index.a85ebbf06ee701145daa5625a9446ae1d1d7fea8d0baa6f2e5bc271f3d42752c.css">
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您的網站標題</title>
+    <style>
+        .centered-title {
+            font-size: 48px;  
+            color: #f5f5f5;  
+            text-align: center;  
+            font-weight: bold;  
+            background-color: #1f2937;  
+            padding: 10px 20px;  
+
+        }
+    </style>
+</head>
+<body>
+    <h1 class="centered-title">_____在草原上開發的海莉_____(Dev version)</h1>
+</body>
+</html>
+
+  
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800">
+  <header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="about" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/about/" title="About">About</a>
+        </li>
+      
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/posts/" title="Post">Post</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href="/search/" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Search</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Toggle dark mode">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col gap-y-3 p-6 mt-6 mx-2 md:mx-0 rounded-lg shadow-md bg-white dark:bg-gray-700">
+    <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+      <a href="/posts/recursion/">談談遞迴Recursion</a>
+    </h1>
+
+    
+    <h2 class="my-4 text-large text-slate-600 dark:text-slate-300">
+      …
+    </h2>
+    
+    
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+      
+      <li>
+        <a href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          演算法
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          資料結構
+        </a>
+      </li>
+      
+    
+    
+      
+      <li>
+        <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">演算法</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">資料結構</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-02-27T00:00:00&#43;00:00">
+      2024-02-27
+    </time>
+  </div>
+</div>
+
+
+    
+
+    <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+      <p>目錄</p>
+<hr>
+<h5 id="科普一下">科普一下</h5>
+<blockquote>
+<p>non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？</p>
+</blockquote>
+<p>直接上個例子：<br>
+non-decreasing(非遞減) ： <code>1 2 3 4</code>  or <code>1 1 2 3</code><br>
+increasing(遞增) ：1 2 3 4<br>
+非遞減的意思是下一個元素不小於前一個元素，所以 <code>1 2 3 4</code>  or <code>1 1 2 3</code> 都符合非遞減的條件，<br>
+但只有<code>1 2 3 4</code>符合遞增的條件，所以兩種排序方式是有這樣的差別的。</p>
+<h5 id="處理linked-list鏈結串列的各種方式">處理Linked-List(鏈結串列)的各種方式：</h5>
+<p>Push-從尾新增節點<br>
+pop-從尾移除節點<br>
+Shift-從頭移除節點<br>
+Unshift-從頭新增節點<br>
+Insert-從中間新增節點<br>
+remove-從中間移除節點<br>
+get-取得節點資訊：類似Search</p>
+<p>Linked List及Array 時間複雜度比較表
+<div class="not-prose">
+<picture>
+    <source type="image/webp" srcset="/posts/recursion/imgs/%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E6%AF%94%E8%BC%83%E8%A1%A8_hu6226062d5a9006432b9689f270eee367_82885_320x0_resize_q75_h2_box_3.webp 320w, /posts/recursion/imgs/%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E6%AF%94%E8%BC%83%E8%A1%A8_hu6226062d5a9006432b9689f270eee367_82885_640x0_resize_q75_h2_box_3.webp 640w" sizes="(min-width: 1024px) 100vw, 50vw" />
+    <source type="image/jpeg" srcset="/posts/recursion/imgs/%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E6%AF%94%E8%BC%83%E8%A1%A8_hu6226062d5a9006432b9689f270eee367_82885_320x0_resize_q75_bgffffff_box_3.jpg 320w, /posts/recursion/imgs/%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E6%AF%94%E8%BC%83%E8%A1%A8_hu6226062d5a9006432b9689f270eee367_82885_640x0_resize_q75_bgffffff_box_3.jpg 640w" sizes="(min-width: 1024px) 100vw, 50vw" />
+    <img class="h-auto max-w-full rounded-lg" src="/posts/recursion/imgs/%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E6%AF%94%E8%BC%83%E8%A1%A8_hu6226062d5a9006432b9689f270eee367_82885_640x0_resize_q75_bgffffff_box_3.jpg" width="695" height="512" alt="" title="" loading="lazy" />
+  </picture>
+</div>
+</p>
+<blockquote>
+<p>思考：比較下來，發現LinkedList的優勢會在從頭新增元素時，不需像Array一樣將所有索引重新計算，但整體看下來，適合用Array的應用情境會比較多，不太確定Singly-Linked-List的重要性為何，待後面有更深入了解再補上吧。
+(有可能使用方式是來做其他演算法如二元樹的基礎)</p>
+</blockquote>
+<p><a href="https://medium.com/@ralph-tech/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97-linked-list-%E9%99%A3%E5%88%97-array-ce8626a2a70" title="資料結構學習筆記：鏈結串列（Linked List）&amp; 陣列（Array）" target="_blank" rel="noopener">參考資料</a>
+</p>
+
+    </article>
+
+    
+
+
+
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2021 - 2024 Hailey
+    
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/main.js"></script>
+
+
+
+
+</body>
+</html>

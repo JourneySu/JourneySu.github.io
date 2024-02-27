@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>演算法 on Coding Grassland</title>
+    <link>http://localhost:1313/series/%E6%BC%94%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 演算法 on Coding Grassland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Hailey</copyright>
+    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/series/%E6%BC%94%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>談談遞迴Recursion</title>
+      <link>http://localhost:1313/posts/recursion/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/recursion/</guid>
+      <description>目錄&#xA;科普一下&#xA;non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？&#xA;直接上個例子：&#xA;non-decreasing(非遞減) ： 1 2 3 4 or 1 1 2 3&#xA;increasing(遞增) ：1 2 3 4&#xA;非遞減的意思是下一個元素不小於前一個元素，所以 1 2 3 4 or 1 1 2 3 都符合非遞減的條件，&#xA;但只有1 2 3 4符合遞增的條件，所以兩種排序方式是有這樣的差別的。</description>
+    </item>
+  </channel>
+</rss>
