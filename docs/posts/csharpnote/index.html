@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>談談C#-兩個變數指向相同記憶體位址 :: Coding Grassland - Example site for hugo-theme-tailwind</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="目錄
+先上我與Chatgpt的學習過程吧！
+我：
+我可以理解成，當兩個同type的變數指向同一個記憶體位置時，如ListNode a= new ListNode(3);var b = a;，此時更改a或b變數底下的「屬性」，改的會是指向記憶體的值，但若更改a或b，如b=b.next，則代表將原有的指向記憶體引用斷開，改成指向另一記憶體，所以a和b此時指向的記憶體空間便會是不一樣的，對嗎？ChatGPT
+是的，你的理解是正確的。當兩個同類型的變數指向同一個記憶體位置時，它們實際上是引用相同的物件。因此，如果你更改其中一個變數底下的屬性，例如變更 a.val 或 b.val，這將影響到同一個物件，因為它們指向同一個記憶體位置。然而，如果你更改其中一個變數本身，例如 b = b.next;，這將會斷開這兩個變數之間的連接，使得它們指向不同的記憶體位置。在這種情況下，a 和 b 將指向不同的物件，因此它們指向的記憶體空間將不同。我：
+可以分別為我撰寫程式碼範例，使我更能理解嗎ChatGPT
+當然可以，以下是一個範例程式碼：Copy code using System; public class ListNode { public int val; public ListNode next; public ListNode(int val=0, ListNode next=null) { this.val = val; this.next = next; } } class Program { static void Main(string[] args) { // 創建一個新的 ListNode 物件 a ListNode a = new ListNode(3); // 將 b 設置為 a ListNode b = a; // 印出 a 和 b 的 val Console."
+/>
+<meta
+  name="keywords"
+  content="hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+/>
+<meta name="robots" content="noodp" />
+<meta property="og:title" content="談談C#-兩個變數指向相同記憶體位址" />
+<meta property="og:description" content="那些開發時踩到的坑…" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/csharpnote/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-27T00:00:00+00:00" />
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="談談C#-兩個變數指向相同記憶體位址"/>
+<meta name="twitter:description" content="那些開發時踩到的坑…"/>
+
+
+<link rel="canonical" href="http://localhost:1313/posts/csharpnote/" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/css/index.a85ebbf06ee701145daa5625a9446ae1d1d7fea8d0baa6f2e5bc271f3d42752c.css">
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您的網站標題</title>
+    <style>
+        .centered-title {
+            font-size: 48px;  
+            color: #f5f5f5;  
+            text-align: center;  
+            font-weight: bold;  
+            background-color: #1f2937;  
+            padding: 10px 20px;  
+
+        }
+    </style>
+</head>
+<body>
+    <h1 class="centered-title">_____在草原上開發的海莉_____(Dev version)</h1>
+</body>
+</html>
+
+  
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800">
+  <header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="about" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/about/" title="About">About</a>
+        </li>
+      
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/posts/" title="Post">Post</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href="/search/" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Search</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Toggle dark mode">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col gap-y-3 p-6 mt-6 mx-2 md:mx-0 rounded-lg shadow-md bg-white dark:bg-gray-700">
+    <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+      <a href="/posts/csharpnote/">談談C#-兩個變數指向相同記憶體位址</a>
+    </h1>
+
+    
+    <h2 class="my-4 text-large text-slate-600 dark:text-slate-300">
+      那些開發時踩到的坑…
+    </h2>
+    
+    
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+    
+      
+      <li>
+        <a href="/tags/csharp/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">CSharp</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-02-27T00:00:00&#43;00:00">
+      2024-02-27
+    </time>
+  </div>
+</div>
+
+
+    
+
+    <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+      <p>目錄</p>
+<hr>
+<p>先上我與Chatgpt的學習過程吧！</p>
+<p>我：</p>
+<pre><code>我可以理解成，當兩個同type的變數指向同一個記憶體位置時，如
+ListNode a= new ListNode(3);
+var b = a;
+，此時更改a或b變數底下的「屬性」，改的會是指向記憶體的值，
+
+但若更改a或b，如
+b=b.next，則代表將原有的指向記憶體引用斷開，改成指向另一記憶體，
+所以a和b此時指向的記憶體空間便會是不一樣的，對嗎？
+</code></pre>
+<p>ChatGPT</p>
+<pre><code>是的，你的理解是正確的。
+
+當兩個同類型的變數指向同一個記憶體位置時，它們實際上是引用相同的物件。因此，如果你更改其中一個變數底下的屬性，例如變更 a.val 或 b.val，這將影響到同一個物件，因為它們指向同一個記憶體位置。
+
+然而，如果你更改其中一個變數本身，例如 b = b.next;，這將會斷開這兩個變數之間的連接，使得它們指向不同的記憶體位置。在這種情況下，a 和 b 將指向不同的物件，因此它們指向的記憶體空間將不同。
+</code></pre>
+<p>我：</p>
+<pre><code>可以分別為我撰寫程式碼範例，使我更能理解嗎
+</code></pre>
+<p>ChatGPT</p>
+<pre><code>當然可以，以下是一個範例程式碼：
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Copy code
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListNode</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ListNode next;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ListNode(<span style="color:#66d9ef">int</span> val=<span style="color:#ae81ff">0</span>, ListNode next=<span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.val = val;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.next = next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 創建一個新的 ListNode 物件 a</span>
+</span></span><span style="display:flex;"><span>        ListNode a = <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 將 b 設置為 a</span>
+</span></span><span style="display:flex;"><span>        ListNode b = a;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 印出 a 和 b 的 val</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;a.val = &#34;</span> + a.val); <span style="color:#75715e">// 3</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;b.val = &#34;</span> + b.val); <span style="color:#75715e">// 3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 更改 a 的 val</span>
+</span></span><span style="display:flex;"><span>        a.val = <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 印出 a 和 b 的 val，因為 a 和 b 都指向同一個物件，所以它們的 val 都會改變</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;After changing a.val:&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;a.val = &#34;</span> + a.val); <span style="color:#75715e">// 5</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;b.val = &#34;</span> + b.val); <span style="color:#75715e">// 5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 創建一個新的 ListNode 物件 c</span>
+</span></span><span style="display:flex;"><span>        ListNode c = <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 將 b 設置為 c，這將斷開 a 和 b 之間的連接</span>
+</span></span><span style="display:flex;"><span>        b = c;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 印出 a 和 b 的 val，它們現在指向不同的物件，所以它們的 val 不同</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;After changing b:&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;a.val = &#34;</span> + a.val); <span style="color:#75715e">// 5</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;b.val = &#34;</span> + b.val); <span style="color:#75715e">// 10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 這裡再次更改 a 的 val</span>
+</span></span><span style="display:flex;"><span>        a.val = <span style="color:#ae81ff">15</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 印出 a 和 b 的 val，即使 a 的 val 已經改變，但 b 不受影響，因為它們現在指向不同的物件</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;After changing a.val again:&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;a.val = &#34;</span> + a.val); <span style="color:#75715e">// 15</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;b.val = &#34;</span> + b.val); <span style="color:#75715e">// 10</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><pre><code>在這個範例中，我們創建了兩個 ListNode 物件 a 和 c，並將 b 設置為 a。然後，我們更改 a 的 val，這也會影響到 b，因為它們都指向同一個物件。接著，我們將 b 設置為 c，這將斷開 a 和 b 之間的連接，使得它們指向不同的物件。最後，我們再次更改 a 的 val，但這次不會影響到 b，因為它們現在指向不同的物件。
+</code></pre>
+<p>我</p>
+<pre><code>上面同樣的例子，記憶體指向可以用圖示的方式做解釋嗎？
+</code></pre>
+<p>ChatGPT</p>
+<pre><code>當然可以！讓我用圖示來解釋：
+
+首先，我們先來看一下一開始的情況，a 和 b 都指向同一個物件：
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">ListNode</span>: <span style="color:#ae81ff">a, b</span>
+</span></span><span style="display:flex;"><span>   |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   v</span>   
+</span></span><span style="display:flex;"><span>[ <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">| ] --&gt; null</span>
+</span></span></code></pre></div><pre><code>在這個情況下，a 和 b 都指向 [ 3 | ] 這個節點。
+
+接著，當我們將 b 設置為 c 時，b 將指向一個新的物件，而不是 a 所指向的物件：
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">ListNode: a            ListNode</span>: <span style="color:#ae81ff">b</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">|                          |</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">v                          v</span>
+</span></span><span style="display:flex;"><span>[ <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">| ] --&gt; null          [ 10 | ] --&gt; null</span>
+</span></span></code></pre></div><pre><code>現在，a 和 b 指向不同的物件，分別是 [ 3 | ] 和 [ 10 | ]。
+
+即使我們修改了 a 所指向的物件的值，b 不會受到影響，因為它們指向不同的物件。這就是為什麼在最後一部分中，a.val 和 b.val 的值分別是 15 和 10。
+</code></pre>
+<p>我</p>
+<pre><code>是否可以你將程式碼寫出來，考我的理解程度
+</code></pre>
+<p>ChatGPT</p>
+<pre><code>當然，以下是一些程式碼示例，您可以試著理解它們的執行結果：
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListNode</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ListNode next;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ListNode(<span style="color:#66d9ef">int</span> val=<span style="color:#ae81ff">0</span>, ListNode next=<span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.val = val;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.next = next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 示例 1: 值類型和參考類型的存儲方式不同</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> value1 = <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> value2 = value1;
+</span></span><span style="display:flex;"><span>        value1 = <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;value1 = &#34;</span> + value1); <span style="color:#75715e">// 20</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;value2 = &#34;</span> + value2); <span style="color:#75715e">// 10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ListNode node1 = <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>        ListNode node2 = node1;
+</span></span><span style="display:flex;"><span>        node1.val = <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;node1.val = &#34;</span> + node1.val); <span style="color:#75715e">// 5</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;node2.val = &#34;</span> + node2.val); <span style="color:#75715e">// 5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 示例 2: 物件之間的指向關係</span>
+</span></span><span style="display:flex;"><span>        ListNode head = <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        head.next = <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>        head.next.next = <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>        ListNode current = head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (current != <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;Node value: &#34;</span> + current.val); 
+</span></span><span style="display:flex;"><span>            current = current.next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Node value: 1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Node value: 2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Node value: 3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 示例 3: 物件引用的影響</span>
+</span></span><span style="display:flex;"><span>        Person person1 = <span style="color:#66d9ef">new</span> Person(<span style="color:#e6db74">&#34;Alice&#34;</span>);
+</span></span><span style="display:flex;"><span>        Person person2 = person1;
+</span></span><span style="display:flex;"><span>        person1.Name = <span style="color:#e6db74">&#34;Bob&#34;</span>;
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;person1.Name = &#34;</span> + person1.Name); <span style="color:#75715e">// Bob</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;person2.Name = &#34;</span> + person2.Name); <span style="color:#75715e">// Bob</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 示例 4: 陣列中的物件引用</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span>[] array1 = {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span>[] array2 = array1;
+</span></span><span style="display:flex;"><span>        array1[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;array1[0] = &#34;</span> + array1[<span style="color:#ae81ff">0</span>]); <span style="color:#75715e">// 10</span>
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;array2[0] = &#34;</span> + array2[<span style="color:#ae81ff">0</span>]); <span style="color:#75715e">// 10</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Person(<span style="color:#66d9ef">string</span> name) {
+</span></span><span style="display:flex;"><span>        Name = name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><pre><code>這些示例包含了值類型和參考類型的存儲方式、物件之間的指向關係以及物件引用的影響。請試著運行這些程式碼片段，觀察它們的輸出，並試著理解每個示例中變數之間的關係。
+</code></pre>
+
+    </article>
+
+    
+
+
+
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2021 - 2024 Hailey
+    
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/main.js"></script>
+
+<div class="hidden top-1 right-1" id="code-copy">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+  <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+</svg>
+
+  </i>
+</div>
+<div class="hidden top-1 right-1" id="code-copy-done">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l5 5l10 -10" />
+</svg>
+
+  </i>
+</div><script src="/code-copy.js"></script>
+
+
+
+
+
+</body>
+</html>

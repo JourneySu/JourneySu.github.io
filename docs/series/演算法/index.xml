@@ -14,7 +14,7 @@
       <link>http://localhost:1313/posts/recursion/</link>
       <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/recursion/</guid>
-      <description>目錄&#xA;科普一下&#xA;non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？&#xA;直接上個例子：&#xA;non-decreasing(非遞減) ： 1 2 3 4 or 1 1 2 3&#xA;increasing(遞增) ：1 2 3 4&#xA;非遞減的意思是下一個元素不小於前一個元素，所以 1 2 3 4 or 1 1 2 3 都符合非遞減的條件，&#xA;但只有1 2 3 4符合遞增的條件，所以兩種排序方式是有這樣的差別的。</description>
+      <description>目錄&#xA;科普一下 non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？&#xA;直接上個例子：&#xA;non-decreasing(非遞減) ： 1 2 3 4 or 1 1 2 3&#xA;increasing(遞增) ：1 2 3 4&#xA;非遞減的意思是下一個元素不小於前一個元素，所以 1 2 3 4 or 1 1 2 3 都符合非遞減的條件，&#xA;但只有1 2 3 4符合遞增的條件，所以兩種排序方式是有這樣的差別的。&#xA;處理Linked-List(鏈結串列)的各種方式： Push-從尾新增節點&#xA;pop-從尾移除節點&#xA;Shift-從頭移除節點&#xA;Unshift-從頭新增節點&#xA;Insert-從中間新增節點&#xA;remove-從中間移除節點&#xA;get-取得節點資訊：類似Search&#xA;Linked List及Array 時間複雜度比較表 思考：比較下來，發現LinkedList的優勢會在從頭新增元素時，不需像Array一樣將所有索引重新計算，但整體看下來，適合用Array的應用情境會比較多，不太確定Singly-Linked-List的重要性為何，待後面有更深入了解再補上吧。 (有可能使用方式是來做其他演算法如二元樹的基礎)&#xA;參考資料&#xD;</description>
     </item>
   </channel>
 </rss>

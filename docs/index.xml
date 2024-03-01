@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Hailey</copyright>
-    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Feb 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
@@ -17,11 +17,25 @@
       <description>嗨！大家好，我是Hailey，歡迎來到我的部落格！&#xA;我是個軟體工程師，喜歡不斷學習新知識，並追求技術的進步。&#xA;這個部落格是我的學習筆記，記錄我在軟體開發和生活中的點滴收穫。&#xA;.&#xA;我喜歡與大自然親近，爬山和養植物是我的嗜好，&#xA;健身也是我日常生活的一部分，最近也嘗試攀岩(抱石)，給自己一點小挑戰，&#xA;除了技術能力要定時充電，身體和心靈也是需定時補充能量，是吧😆&#xA;.&#xA;期待在這裡與大家分享我的學習心得和生活趣事，並與各位一起交流、成長！&#xA;.</description>
     </item>
     <item>
+      <title>學英文(或任何語言)的方式</title>
+      <link>http://localhost:1313/posts/howtolearnenglish/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/howtolearnenglish/</guid>
+      <description>目錄&#xA;此篇心得是由以下這個Youtube而來，&#xA;廢話不多說，直接先上影片連結： Youtube: 輕鬆學語言，告別死讀書時代&#xD;1、不要開啟母語字幕&#xA;若你一直在用你的母語閱讀字幕，你可能沒有挑戰你的大腦去學習新事物&#xA;2、找比現在程度再高一階的Level學&#xA;3、自言自語(Self talk)&#xA;讓自己能用新的語言去思考</description>
+    </item>
+    <item>
+      <title>談談C#-兩個變數指向相同記憶體位址</title>
+      <link>http://localhost:1313/posts/csharpnote/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/csharpnote/</guid>
+      <description>目錄&#xA;先上我與Chatgpt的學習過程吧！&#xA;我：&#xA;我可以理解成，當兩個同type的變數指向同一個記憶體位置時，如&#xD;ListNode a= new ListNode(3);&#xD;var b = a;&#xD;，此時更改a或b變數底下的「屬性」，改的會是指向記憶體的值，&#xD;但若更改a或b，如&#xD;b=b.next，則代表將原有的指向記憶體引用斷開，改成指向另一記憶體，&#xD;所以a和b此時指向的記憶體空間便會是不一樣的，對嗎？&#xD;ChatGPT&#xA;是的，你的理解是正確的。&#xD;當兩個同類型的變數指向同一個記憶體位置時，它們實際上是引用相同的物件。因此，如果你更改其中一個變數底下的屬性，例如變更 a.val 或 b.val，這將影響到同一個物件，因為它們指向同一個記憶體位置。&#xD;然而，如果你更改其中一個變數本身，例如 b = b.next;，這將會斷開這兩個變數之間的連接，使得它們指向不同的記憶體位置。在這種情況下，a 和 b 將指向不同的物件，因此它們指向的記憶體空間將不同。&#xD;我：&#xA;可以分別為我撰寫程式碼範例，使我更能理解嗎&#xD;ChatGPT&#xA;當然可以，以下是一個範例程式碼：&#xD;Copy code using System; public class ListNode { public int val; public ListNode next; public ListNode(int val=0, ListNode next=null) { this.val = val; this.next = next; } } class Program { static void Main(string[] args) { // 創建一個新的 ListNode 物件 a ListNode a = new ListNode(3); // 將 b 設置為 a ListNode b = a; // 印出 a 和 b 的 val Console.</description>
+    </item>
+    <item>
       <title>談談遞迴Recursion</title>
       <link>http://localhost:1313/posts/recursion/</link>
       <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/recursion/</guid>
-      <description>目錄&#xA;科普一下&#xA;non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？&#xA;直接上個例子：&#xA;non-decreasing(非遞減) ： 1 2 3 4 or 1 1 2 3&#xA;increasing(遞增) ：1 2 3 4&#xA;非遞減的意思是下一個元素不小於前一個元素，所以 1 2 3 4 or 1 1 2 3 都符合非遞減的條件，&#xA;但只有1 2 3 4符合遞增的條件，所以兩種排序方式是有這樣的差別的。</description>
+      <description>目錄&#xA;科普一下 non-decreasing(非遞減)與 increasing(遞增) 是一樣的嗎？&#xA;直接上個例子：&#xA;non-decreasing(非遞減) ： 1 2 3 4 or 1 1 2 3&#xA;increasing(遞增) ：1 2 3 4&#xA;非遞減的意思是下一個元素不小於前一個元素，所以 1 2 3 4 or 1 1 2 3 都符合非遞減的條件，&#xA;但只有1 2 3 4符合遞增的條件，所以兩種排序方式是有這樣的差別的。&#xA;處理Linked-List(鏈結串列)的各種方式： Push-從尾新增節點&#xA;pop-從尾移除節點&#xA;Shift-從頭移除節點&#xA;Unshift-從頭新增節點&#xA;Insert-從中間新增節點&#xA;remove-從中間移除節點&#xA;get-取得節點資訊：類似Search&#xA;Linked List及Array 時間複雜度比較表 思考：比較下來，發現LinkedList的優勢會在從頭新增元素時，不需像Array一樣將所有索引重新計算，但整體看下來，適合用Array的應用情境會比較多，不太確定Singly-Linked-List的重要性為何，待後面有更深入了解再補上吧。 (有可能使用方式是來做其他演算法如二元樹的基礎)&#xA;參考資料&#xD;</description>
     </item>
     <item>
       <title>資料結構及演算法學習筆記</title>
