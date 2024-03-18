@@ -17,9 +17,11 @@ aliases = ["migrate-from-jekyl"]
 
 
 目錄
+- [Chatgpt說明](#chatgpt說明)
 
 ---
 
+## Chatgpt說明
 先上我與Chatgpt的學習過程吧！
 
 
@@ -209,4 +211,20 @@ public class Person {
 }
 ```
     這些示例包含了值類型和參考類型的存儲方式、物件之間的指向關係以及物件引用的影響。請試著運行這些程式碼片段，觀察它們的輸出，並試著理解每個示例中變數之間的關係。
+
+
+## Value Type 與 Reference Type
+ex：int為 Value Type
+ex:array、object為Reference Type
+
+圖示說明：
+
+    待補
+
+
+## call by Value / call by Reference
+
+
+
+[Day24-C#-參數的傳遞方式-Call By Value/Call By Reference/Output parameter](<https://ithelp.ithome.com.tw/articles/10213241> "")
 
