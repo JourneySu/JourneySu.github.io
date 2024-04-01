@@ -8,7 +8,7 @@ tags = [
     "",
 ]
 categories = [
-    "",
+    "MSSQL",
     "",
 ]
 series = [""]
