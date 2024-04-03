@@ -25,11 +25,14 @@ aliases = ["migrate-from-jekyl"]
 二、解決方案二：MS SQL Always On
    1. `效能差`，資料遺失風險小，資料讀寫同步。
    2. 有MSSQL版本限制
+   3. 提供更高可用性及災難備援移轉服務
    
 三、解決方案三：Redis + MQ
    1. 讀寫一律透過Redis。
    2. Redis本身也可做Master-Slave達到讀寫分離架構
    3. MQ定時(或by事件)寫回DB
+   4. 設計上較彈性，耦合性較低
+   5. 補充：若有需有資料表定時備份，也可另外搭配Replication功能
 
 四、解決方案四(不考慮)：SQL Server In-Memory OLTP(Hekaton) 
    1. 顯少有人使用這方法，資源少
@@ -156,6 +159,9 @@ https://medium.com/@shoeb.hasan/mastering-master-slave-replication-enhance-your-
 [Transactional Replication實作參考2](<https://www.cnblogs.com/wei325/p/16516014.html>)  
 [Transactional Replication實作參考3](<https://hevodata.com/learn/sql-server-transactional-replication/>)  
 [安裝mssql複製元件步驟](<https://www.mssqltips.com/sqlservertip/6250/troubleshooting-sql-server-replication-installation/>)
+[Transactional Replication vs AO](<https://dba.stackexchange.com/questions/303129/transactional-replication-vs-ao-for-ms-sql-server>)
+
+
 
 
 
