@@ -101,6 +101,52 @@ builder.Services.AddLibs();
 
 ```
 
+### 註冊與建立Redis連線
+
+說明：
+1. `.AddDataProtection()  `：使用資料保護服務處理敏感資料
+2. `.SetApplicationName("hncb_session_application_name")`： 指定應用程式名稱：因為預設資料保護會將不同應用程式依據content root做隔離，但當有多個伺服器，需要共用資料時(ex:cookie server功能)，則可在不同server皆設定同一appName，這樣彼此間可以做解密以讀取資料
+3. `.PersistKeysToStackExchangeRedis(redis, "hncb-DataProtection-Keys")`：將金鑰存在Redis(詳細待了解)
+
+```c#
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ICacheService, DistributedCacheService>();
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["RedisServer:ConnectionString"];
+});
+
+// 建立一個Redis連線
+var redis = ConnectionMultiplexer.Connect(builder.Configuration["RedisServer:ConnectionString"]);
+
+
+builder.Services.AddDataProtection()            
+                .SetApplicationName("hncb_session_application_name") 
+                .PersistKeysToStackExchangeRedis(redis, "hncb-DataProtection-Keys");
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -113,3 +159,4 @@ builder.Services.AddLibs();
 
 
 (Ps)學習方式：查看現有專案有註冊的，一一去了解用途
+

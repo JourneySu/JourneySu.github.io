@@ -21,11 +21,14 @@ aliases = ["migrate-from-jekyl"]
 一、解決方案一：MS SQL Transaction Replication 
    1. `效能優，資料讀寫"幾乎"同步。  `  
    2. 一主Master，一或多Slave
+   3. 優：可以對資料進行較細粒度的控制，例如可以選擇性地複製特定的資料表或資料庫  
+      缺：在大量寫入的情況下，複製可能會有一定的延遲
 
 二、解決方案二：MS SQL Always On
    1. `效能差`，資料遺失風險小，資料讀寫同步。
    2. 有MSSQL版本限制
-   3. 提供更高可用性及災難備援移轉服務
+   3. 優：提供更高可用性及災難備援移轉服務  
+      缺：需要額外的硬體和軟體成本。(版本限制)
    
 三、解決方案三：Redis + MQ
    1. 讀寫一律透過Redis。
@@ -37,6 +40,7 @@ aliases = ["migrate-from-jekyl"]
 四、解決方案四(不考慮)：SQL Server In-Memory OLTP(Hekaton) 
    1. 顯少有人使用這方法，資源少
    2. 效能也沒有Redis好
+   3. 缺：需要較高技術要求、較少人使用、資源少
 
 
 ## 讀寫分離資料庫
